@@ -1,0 +1,16 @@
+.btn {
+    background-color: transparent;
+    padding: 0.5em;
+    font-size: inherit;
+    text-transform: uppercase;
+}
+
+.btn-outline {
+    border: 1px solid black;
+    color: black;
+}
+
+.btn-full {
+    background-color: black;
+    color: white;
+}
