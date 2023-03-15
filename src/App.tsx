@@ -8,9 +8,7 @@ function App() {
 
   return (
     <div className="App">
-      <Button variant="full">Click me</Button>
       <Button variant="outline">Click Me Outline</Button>
-
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src="/vite.svg" className="logo" alt="Vite logo" />
