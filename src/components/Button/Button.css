@@ -1,16 +1,32 @@
 .btn {
-    background-color: transparent;
-    padding: 0.5em;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0.3em 0.6em;
+    border-radius: 0.3rem;
     font-size: inherit;
-    text-transform: uppercase;
+    font-family: inherit;
 }
 
+/* Variants */
 .btn-outline {
-    border: 1px solid black;
-    color: black;
+    color: var(--color);
+    background-color: transparent;
+    border: 1px solid var(--color);
 }
 
-.btn-full {
-    background-color: black;
-    color: white;
+.btn-text {
+    background-color: transparent;
+    color: var(--color);
+    padding: 0;
 }
+/* Colors */
+
+.btn-navy {
+    --color: navy;
+}
+
+.btn-black {
+    --color: #000;
+}
+

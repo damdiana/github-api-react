@@ -1,19 +1,29 @@
-import React, { PropsWithChildren } from 'react'
-import './Button.css'
+import React, { PropsWithChildren } from 'react';
+import './Button.css';
 
 type Props = {
-  variant: 'full' | 'outline'
-}
+  variant: 'text' | 'outline';
+  color?: 'navy' | 'black';
+  type?: React.ButtonHTMLAttributes<HTMLButtonElement>['type'];
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+};
 
-const Button = ({ variant, children }: PropsWithChildren<Props>) => {
+const Button = ({
+  variant,
+  color = 'navy',
+  type = 'button',
+  onClick,
+  children,
+}: PropsWithChildren<Props>) => {
   return (
     <button
-      type="button"
-      className={`btn ${variant === 'full' ? 'btn-full' : 'btn-outline'}`}
+      type={type}
+      onClick={onClick}
+      className={`btn btn-${variant} btn-${color}`}
     >
       {children}
     </button>
-  )
-}
+  );
+};
 
-export default Button
+export default Button;
