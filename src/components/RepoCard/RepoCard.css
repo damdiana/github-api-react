@@ -1,0 +1,62 @@
+.repo-card {
+    --navy-text: #012169;
+    --card-border: grey;
+    --black: #000;
+    --white: #fff;
+    --background: linear-gradient(90deg, rgba(238, 174, 202, 1) 0%, rgba(234, 175, 203, 1) 0%, rgba(148, 187, 233, 1) 100%);
+    --js: #f1e05a;
+    --html: #e34c26;
+    --css: #563d7c;
+    --typescript: #2b7489;
+    --navy-text: #012169;
+    border: 1px solid var(--card-border);
+    border-radius: 0.3em;
+    background-color: transparent;
+    color: var(--navy-text);
+    padding: 1em;
+}
+
+.repo-link {
+    color: inherit;
+    font-size: 1.1em;
+}
+
+.repo-card a {
+    text-decoration: none;
+    color: var(--navy-text);
+}
+
+.repo-card a:visited {
+    color: var(--navy-text);
+}
+
+.repo-details__display {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+}
+
+.lng-badge {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+}
+
+.lng-badge-JavaScript {
+    background-color: var(--js);
+}
+
+.lng-badge-HTML {
+    background-color: var(--html);
+}
+
+.lng-badge-CSS {
+    background-color: var(--css);
+}
+
+.lng-badge-TypeScript {
+    background-color: var(--typescript);
+}
+
