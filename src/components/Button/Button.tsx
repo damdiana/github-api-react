@@ -6,6 +6,7 @@ type Props = {
   color?: 'navy' | 'black';
   type?: React.ButtonHTMLAttributes<HTMLButtonElement>['type'];
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  className?: string;
 };
 
 const Button = ({
@@ -14,12 +15,13 @@ const Button = ({
   type = 'button',
   onClick,
   children,
+  className = '',
 }: PropsWithChildren<Props>) => {
   return (
     <button
       type={type}
       onClick={onClick}
-      className={`btn btn-${variant} btn-${color}`}
+      className={`btn btn-${variant} btn-${color} ${className}`}
     >
       {children}
     </button>
