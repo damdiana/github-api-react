@@ -1,0 +1,63 @@
+.details-dialog {
+    height: 100vh;
+    min-height: 100vh;
+    max-width: 100vw;
+    width: 40vw;
+    margin: 0 0 0 auto;
+    font-size: 1em;
+    padding: 0;
+    position: relative;
+}
+
+.details-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.details-dialog__content {
+    padding: 1em;
+    height: 100%;
+    max-height: 100%;
+    overflow: auto;
+}
+
+.title-hover:hover {
+    display: block;
+    background-color: #f88787;
+    border-radius: 1em;
+    padding: 0.2em 0.7em;
+}
+
+.dialog-button {
+    position: absolute;
+    top: 0.5em;
+    right: 1em;
+}
+
+dialog a,
+dialog a:visited {
+    color: #000;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    background-color: #fff;
+    width: 100%;
+    left: 0;
+    padding: 0.3em 0;
+}
+
+@media screen and (max-width:800px) {
+    .details-dialog {
+        max-width: 100vw;
+        width: 100vw;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .dialog__repo-card {
+        flex-direction: column;
+        flex-wrap: none;
+        gap: 0.5em;
+    }
+}
