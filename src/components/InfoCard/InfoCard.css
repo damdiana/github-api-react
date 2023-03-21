@@ -1,0 +1,15 @@
+.dialog-background {
+    border: 0.1em solid transparent;
+    border-radius: 0.3em;
+    padding: 0.5em;
+    background: linear-gradient(#f9a7a7, #c9cbf1);
+    box-shadow: 5px 10px 10px grey;
+}
+
+.title-hover:hover {
+    display: block;
+    background-color: #f88787;
+    border-radius: 1em;
+    padding: 0.2em 0.7em;
+}
+
