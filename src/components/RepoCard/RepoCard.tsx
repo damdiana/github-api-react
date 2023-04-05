@@ -4,18 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { PropsWithChildren } from 'react';
 import Button from '../Button/Button';
 import './RepoCard.css';
-
-type GithubRepo = {
-  private: boolean;
-  html_url: string;
-  name: string;
-  language: string;
-  owner: {
-    login: string;
-  };
-  stargazers_count: number;
-  forks_count: number;
-};
+import { GithubRepo } from '../../GithubAPI';
 
 type Props = {
   repo: GithubRepo;
