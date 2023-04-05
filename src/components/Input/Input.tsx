@@ -1,22 +1,23 @@
-import React, { HTMLInputTypeAttribute } from 'react'
-import './Input.css'
+import React, { HTMLInputTypeAttribute } from 'react';
+import './Input.css';
 
 type Props = {
-  placeholder: string
-  name: string
-  type: HTMLInputTypeAttribute
-}
+  placeholder: string;
+  name: string;
+  type: HTMLInputTypeAttribute;
+  className?: string;
+};
 
-const Input = (props: Props) => {
+const Input = ({ placeholder, name, type, className }: Props) => {
   return (
     <input
-      name={props.name}
-      placeholder={props.placeholder}
+      name={name}
+      placeholder={placeholder}
       required
-      type={props.type}
-      className="input"
+      type={type}
+      className={`input ${className}`}
     />
-  )
-}
+  );
+};
 
-export default Input
+export default Input;

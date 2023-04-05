@@ -1,35 +1,31 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
 import './App.css';
-import './style/utils.css';
 import Button from './components/Button/Button';
+import Input from './components/Input/Input';
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div className="App">
-      <Button variant="outline">Click Me Outline</Button>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div className="app">
+      <main>
+        <header className="text-center">
+          <h1> Search repos </h1>
+        </header>
+        <form className="flex justify-center">
+          <Input
+            placeholder="username"
+            name="username"
+            type={'search'}
+            className="rounded-r-none"
+          />
+          <Button
+            type="submit"
+            variant="outline"
+            color="black"
+            className="bg-white rounded-l-none"
+          >
+            Submit
+          </Button>
+        </form>
+      </main>
     </div>
   );
 }
