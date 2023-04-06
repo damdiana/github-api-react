@@ -34,6 +34,10 @@
     display: flex;
 }
 
+.grid {
+    display: grid;
+}
+
 .align-center {
     align-items: center;
 }
@@ -68,4 +72,29 @@
 
 .list-none {
     list-style-type: none;
+}
+
+.gap-4 {
+    gap: 1em;
+}
+
+.grid-cols-3 {
+    grid-template-columns: repeat(auto-fill, minmax(min(400px, 100%), 3fr));
+}
+
+/* Font */
+.text-base	{
+    font-size: 1em;
+}
+
+.text-start {
+    text-align: start;
+}
+
+.text-red {
+    color: red;
+}
+
+.text-yellow {
+    color: yellow;
 }
