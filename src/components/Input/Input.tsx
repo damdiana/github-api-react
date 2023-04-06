@@ -6,11 +6,13 @@ type Props = {
   name: string;
   type: HTMLInputTypeAttribute;
   className?: string;
+  disabled?: boolean;
 };
 
-const Input = ({ placeholder, name, type, className }: Props) => {
+const Input = ({ placeholder, name, type, className, disabled }: Props) => {
   return (
     <input
+      disabled={disabled}
       name={name}
       placeholder={placeholder}
       required
