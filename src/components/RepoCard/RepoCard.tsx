@@ -8,9 +8,14 @@ import { GithubRepo } from '../../GithubAPI';
 
 type Props = {
   repo: GithubRepo;
+  onSelect: (repoName: string) => void;
 };
 
-const RepoCard = ({ repo }: Props) => {
+const RepoCard = ({ repo, onSelect }: Props) => {
+  const onButtonClick = () => {
+    onSelect(repo.name);
+  };
+
   return (
     <div className="repo-card">
       <a href={repo.html_url} className="repo-link">
@@ -42,7 +47,7 @@ const RepoCard = ({ repo }: Props) => {
             <span className="text-sm m-1"> {repo.forks_count} </span>
           </a>
         </div>
-        <Button variant="text" color="navy">
+        <Button onClick={onButtonClick} variant="text" color="navy">
           Details
         </Button>
       </div>

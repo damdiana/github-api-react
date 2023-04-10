@@ -98,3 +98,7 @@
 .text-yellow {
     color: yellow;
 }
+
+.text-bold {
+    font-weight: bold;
+}
