@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import './App.css';
 import Button from './components/Button/Button';
+import Dialog from './components/Dialog/Dialog';
+import InfoCard from './components/InfoCard/InfoCard';
 import Input from './components/Input/Input';
 import RepoCard from './components/RepoCard/RepoCard';
+import { Tab } from './components/Tab/Tab.stories';
 import { GithubRepo, fetchGithubRepos } from './GithubAPI';
 
 function App() {
@@ -35,6 +38,17 @@ function App() {
     e.target.reset();
   };
 
+  const openDialog = (repoName: string) => {
+    let newlySelectedRepo = showRepos.find((repo) => repo.name === repoName);
+    if (newlySelectedRepo !== undefined) {
+      setSelectedRepo(newlySelectedRepo);
+    }
+  };
+
+  const closeDialog = () => {
+    setSelectedRepo(null);
+  };
+
   return (
     <div className="app">
       <header className="text-center">
@@ -46,7 +60,7 @@ function App() {
           placeholder="username"
           name="username"
           type={'search'}
-          className="rounded-r-none"
+          className="rouded-r-none"
         />
         <Button
           type="submit"
@@ -60,7 +74,7 @@ function App() {
       <div className="grid grid-cols-3 mt-4 gap-4 text-base text-start">
         {isLoading === true && <p> loading </p>}
         {showRepos.map((repo) => (
-          <RepoCard key={repo.name} repo={repo} />
+          <RepoCard key={repo.name} repo={repo} onSelect={openDialog} />
         ))}
         {errorMessage !== '' && (
           <p className={errorType === 'fatal' ? 'text-red' : 'text-yellow'}>
@@ -68,6 +82,29 @@ function App() {
           </p>
         )}
       </div>
+      <Dialog open={selectedRepo !== null} onClose={closeDialog}>
+        <h2 className="text-center"> {selectedRepo?.name}</h2>
+        <div className="flex flex-wrap justify-between">
+          <p className="m-0">
+            <span className="text-bold"> Owner: </span>
+            {selectedRepo?.owner.login}
+          </p>
+          {selectedRepo?.language !== null && (
+            <p className="m-0">
+              <span className="text-bold"> Language: </span>
+              {selectedRepo?.language}
+            </p>
+          )}
+          <p className="m-0">
+            <span className="text-bold"> Stars: </span>
+            {selectedRepo?.stargazers_count}
+          </p>
+          <p className="m-0">
+            <span className="text-bold">Forks: </span>
+            {selectedRepo?.forks_count}
+          </p>
+        </div>
+      </Dialog>
     </div>
   );
 }
