@@ -12,7 +12,7 @@ type Props = {
 const InfoCard = ({ title, pairs }: Props) => {
   return (
     <div className="dialog-background text-left mb-2">
-      <a href={title.href} target="_blank" className="title-hover">
+      <a href={title.href} target="_blank" className="title-hover no-underline">
         <span className="text-bold">👉🏻 Title: </span>
         <span> {title.content} </span>
       </a>
