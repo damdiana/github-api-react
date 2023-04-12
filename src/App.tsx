@@ -123,7 +123,9 @@ function App() {
           selectedTabId={selectedTabId}
           tabs={tabsList}
         ></Tab>
-        {selectedTabId === 'issues' && <IssuesList />}
+        {selectedRepo !== null && selectedTabId === 'issues' && (
+          <IssuesList repo={selectedRepo} />
+        )}
         {selectedTabId === 'commits' && <CommitsList />}
       </Dialog>
     </div>
