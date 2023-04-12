@@ -5,15 +5,29 @@ import Dialog from './components/Dialog/Dialog';
 import InfoCard from './components/InfoCard/InfoCard';
 import Input from './components/Input/Input';
 import RepoCard from './components/RepoCard/RepoCard';
-import { Tab } from './components/Tab/Tab.stories';
+import Tab from './components/Tab/Tab';
 import { GithubRepo, fetchGithubRepos } from './GithubAPI';
+import IssuesList from './components/IssuesList';
+import CommitsList from './components/CommitsList';
 
 function App() {
+  const tabsList = [
+    { id: 'issues', label: 'Issues' },
+    {
+      id: 'commits',
+      label: 'Commits',
+    },
+  ];
   const [showRepos, setShowRepos] = useState<GithubRepo[]>([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [selectedRepo, setSelectedRepo] = useState<GithubRepo | null>(null);
   const [errorType, setErrorType] = useState<'fatal' | 'nofatal'>('fatal');
+  const [selectedTabId, setSelectedTabId] = useState(tabsList[0].id);
+
+  const selectTab = (tabId: string) => {
+    setSelectedTabId(tabId);
+  };
 
   const getRepos = async (e: any) => {
     e.preventDefault();
@@ -104,6 +118,13 @@ function App() {
             {selectedRepo?.forks_count}
           </p>
         </div>
+        <Tab
+          onSelected={selectTab}
+          selectedTabId={selectedTabId}
+          tabs={tabsList}
+        ></Tab>
+        {selectedTabId === 'issues' && <IssuesList />}
+        {selectedTabId === 'commits' && <CommitsList />}
       </Dialog>
     </div>
   );
