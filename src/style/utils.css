@@ -109,3 +109,7 @@
 .text-bold {
     font-weight: bold;
 }
+
+.no-underline {
+    text-decoration: none;
+  }

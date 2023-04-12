@@ -126,7 +126,9 @@ function App() {
         {selectedRepo !== null && selectedTabId === 'issues' && (
           <IssuesList repo={selectedRepo} />
         )}
-        {selectedTabId === 'commits' && <CommitsList />}
+        {selectedRepo !== null && selectedTabId === 'commits' && (
+          <CommitsList repo={selectedRepo} />
+        )}
       </Dialog>
     </div>
   );
