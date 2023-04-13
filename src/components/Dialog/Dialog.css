@@ -38,7 +38,7 @@ dialog a:visited {
     color: #000;
 }
 
-footer {
+.footer {
     position: absolute;
     bottom: 0;
     background-color: #fff;
