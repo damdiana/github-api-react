@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { GithubIssue, GithubRepo, fetchGithubIssues } from '../GithubAPI';
 import InfoCard from './InfoCard/InfoCard';
 import { formatDateTime } from '../services/utils';
+import LoadingSpinner from './LoadingSpinner/LoadingSpinner';
 
 const IssuesList = ({ repo }: { repo: GithubRepo }) => {
   const [issues, setIssues] = useState<GithubIssue[]>([]);
@@ -35,7 +36,7 @@ const IssuesList = ({ repo }: { repo: GithubRepo }) => {
 
   return (
     <div>
-      {isLoading === true && <p> loading </p>}
+      {isLoading === true && <LoadingSpinner />}
       {erroMessage !== '' && (
         <p className={errorType === 'fatal' ? 'text-red' : 'text-yellow'}>
           {erroMessage}
