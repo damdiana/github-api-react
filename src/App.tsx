@@ -9,6 +9,7 @@ import Tab from './components/Tab/Tab';
 import { GithubRepo, fetchGithubRepos } from './GithubAPI';
 import IssuesList from './components/IssuesList';
 import CommitsList from './components/CommitsList';
+import SkeletonScreen from './components/SkeletonScreen/SkeletonScreen';
 
 function App() {
   const tabsList = [
@@ -86,7 +87,13 @@ function App() {
         </Button>
       </form>
       <div className="grid grid-cols-3 mt-4 gap-4 text-base text-start">
-        {isLoading === true && <p> loading </p>}
+        {isLoading === true && (
+          <>
+            <SkeletonScreen />
+            <SkeletonScreen />
+            <SkeletonScreen />
+          </>
+        )}
         {showRepos.map((repo) => (
           <RepoCard key={repo.name} repo={repo} onSelect={openDialog} />
         ))}
