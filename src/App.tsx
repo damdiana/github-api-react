@@ -7,8 +7,8 @@ import Input from './components/Input/Input';
 import RepoCard from './components/RepoCard/RepoCard';
 import Tab from './components/Tab/Tab';
 import { GithubRepo, fetchGithubRepos } from './GithubAPI';
-import IssuesList from './components/IssuesList';
-import CommitsList from './components/CommitsList';
+import IssuesList from './components/IssueAndCommitsList/IssuesList';
+import CommitsList from './components/IssueAndCommitsList/CommitsList';
 import SkeletonScreen from './components/SkeletonScreen/SkeletonScreen';
 
 function App() {

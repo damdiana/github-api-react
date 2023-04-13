@@ -1,22 +1,45 @@
 import { useEffect, useState } from 'react';
-import { GithubIssue, GithubRepo, fetchGithubIssues } from '../GithubAPI';
-import InfoCard from './InfoCard/InfoCard';
-import { formatDateTime } from '../services/utils';
-import LoadingSpinner from './LoadingSpinner/LoadingSpinner';
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { GithubIssue, GithubRepo, fetchGithubIssues } from '../../GithubAPI';
+import InfoCard from '../InfoCard/InfoCard';
+import { formatDateTime } from '../../services/utils';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
+import Button from '../Button/Button';
+import './IssueAndCommits.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const IssuesList = ({ repo }: { repo: GithubRepo }) => {
   const [issues, setIssues] = useState<GithubIssue[]>([]);
   const [erroMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [errorType, setErrorType] = useState<'fatal' | 'nofatal'>('fatal');
+  const [pageNumber, setPageNumber] = useState<number>(1);
+  const [hasNextPage, setHasNextPage] = useState(false);
+  const [hasPreviousPage, setHasPreviousPage] = useState(false);
+
+  const showNextPage = () => {
+    setPageNumber(pageNumber + 1);
+  };
+
+  const showPreviousPage = () => {
+    setPageNumber(pageNumber - 1);
+  };
 
   const fetchAndDisplayIssues = async () => {
     setIsLoading(true);
+    setIssues([]);
     try {
-      const resp = await fetchGithubIssues(repo.owner.login, repo.name, 100, 1);
+      const resp = await fetchGithubIssues(
+        repo.owner.login,
+        repo.name,
+        10,
+        pageNumber
+      );
       if (resp.ok) {
         setIssues(resp.issues);
         setErrorMessage('');
+        setHasNextPage(resp.hasNextPage);
+        setHasPreviousPage(resp.hasPreviousPage);
       } else {
         setIssues([]);
         setErrorType('nofatal');
@@ -32,7 +55,7 @@ const IssuesList = ({ repo }: { repo: GithubRepo }) => {
 
   useEffect(() => {
     fetchAndDisplayIssues();
-  }, [repo.name]);
+  }, [repo.name, pageNumber]);
 
   return (
     <div>
@@ -63,6 +86,21 @@ const IssuesList = ({ repo }: { repo: GithubRepo }) => {
           }}
         />
       ))}
+      {erroMessage === '' && (
+        <div className="footer text-center">
+          {hasPreviousPage === true && (
+            <Button variant="text" color="navy" onClick={showPreviousPage}>
+              <FontAwesomeIcon icon={faAngleLeft} /> Prev
+            </Button>
+          )}
+          <span className="page-number"> {pageNumber} </span>
+          {hasNextPage === true && (
+            <Button variant="text" color="navy" onClick={showNextPage}>
+              Next <FontAwesomeIcon icon={faAngleRight} />
+            </Button>
+          )}
+        </div>
+      )}
     </div>
   );
 };
