@@ -8,6 +8,7 @@ import {
 } from '../GithubAPI';
 import InfoCard from './InfoCard/InfoCard';
 import { formatDateTime } from '../services/utils';
+import LoadingSpinner from './LoadingSpinner/LoadingSpinner';
 
 const CommitsList = ({ repo }: { repo: GithubRepo }) => {
   const [commits, setCommits] = useState<GithubCommits[]>([]);
@@ -46,7 +47,7 @@ const CommitsList = ({ repo }: { repo: GithubRepo }) => {
 
   return (
     <div>
-      {isLoading === true && <p> loading </p>}
+      {isLoading === true && <LoadingSpinner />}
       {erroMessage !== '' && (
         <p className={errorType === 'fatal' ? 'text-red' : 'text-yellow'}>
           {erroMessage}
