@@ -75,7 +75,7 @@ function App() {
           placeholder="username"
           name="username"
           type={'search'}
-          className="rouded-r-none"
+          className="rounded-r-none"
         />
         <Button
           type="submit"
